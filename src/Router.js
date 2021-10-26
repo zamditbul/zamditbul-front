@@ -1,6 +1,6 @@
 import React from 'react';
-import main from './main';
-import register from './register';
+import main from './views/main';
+import register from './views/register';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 
