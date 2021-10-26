@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import MainPresenter from './MainPresenter';
+import LoginPresenter from './LoginPresenter';
 
-const MainContainer = () => {
-    const [page, setPage] = useState('LOGIN');
-
+const LoginContainer = () => {
     const [id, setId] = useState('');
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('');
@@ -16,7 +14,7 @@ const MainContainer = () => {
     };
 
     console.log(id);
-    return <MainPresenter id={id} password={password} onChangeId={onChangeId} onChangePassword={onChangePassword} />;
+    return <LoginPresenter id={id} password={password} onChangeId={onChangeId} onChangePassword={onChangePassword} />;
 };
 
-export default MainContainer;
+export default LoginContainer;

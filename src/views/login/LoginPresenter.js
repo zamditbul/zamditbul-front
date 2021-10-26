@@ -1,7 +1,7 @@
 import React from 'react';
-import * as s from './MainStyled';
+import * as s from './LoginStyled';
 import { Link } from 'react-router-dom';
-const MainPresenter = ({ ...props }) => {
+const LoginPresenter = ({ ...props }) => {
     return (
         <s.Wrapper>
             <s.Container>
@@ -22,4 +22,4 @@ const MainPresenter = ({ ...props }) => {
     );
 };
 
-export default MainPresenter;
+export default LoginPresenter;
