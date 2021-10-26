@@ -17,3 +17,8 @@ export const Wrapper = styled.div`
     border: 1px solid #16a085;
     border-radius: 10px;
 `;
+
+export const ColorPickerArea = styled.div`
+    width: 100px;
+    height: 100px;
+`;
