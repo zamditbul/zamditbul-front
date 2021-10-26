@@ -17,21 +17,22 @@ export const Container = styled.div`
     height: 50%;
     border: 1.5px solid gray;
     border-radius: 10px;
-    border-color: #008200;
+    border-color: #16a085;
     display: flex;
     flex-direction: column;
     text-align: center;
 `;
 
 export const Logo = styled.div`
-    font-size: 150%;
+    font-size: 200%;
+    font-weight: bolder;
     width: 100%;
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: green;
-    padding-top: 10px;
+    color: #16a085;
+    padding-top: 30px;
 `;
 
 export const LoginArea = styled.div`
@@ -43,20 +44,24 @@ export const LoginArea = styled.div`
     align-items: center;
 `;
 export const InputArea = styled.input`
-    width: 50%;
+    width: 65%;
     margin-top: 10px;
+    padding-left: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
-    background-color: #f6fced;
-    border: none;
-    color: #587558;
+    border-radius: 5px;
+    border: 1px solid #e2e2e2;
+    color: #16a085;
     outline: none;
 `;
 
 export const LoginButton = styled.button`
     flex: 1;
-    width: 50%;
-    background-color: #008200;
+    font-size: 100%;
+    font-weight: bold;
+    width: 65%;
+    background-color: #16a085;
+    border-radius: 5px;
     color: white;
     display: flex;
     justify-content: center;
@@ -64,5 +69,28 @@ export const LoginButton = styled.button`
     align-self: center;
     margin-bottom: 20px;
     border: none;
+    cursor: pointer;
+`;
+
+export const RegisterArea = styled.div`
+    flex: 1;
+    width: 65%;
+    align-self: center;
+    text-align: right;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+`;
+
+export const RegisterQuestion = styled.h5`
+    color: #e2e2e2;
+    flex: 3;
+    padding-right: 15px;
+`;
+
+export const ToRegister = styled.h5`
+    color: #16a085;
+    flex: 1;
+    text-decoration: underline;
     cursor: pointer;
 `;

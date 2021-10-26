@@ -1,5 +1,6 @@
 import React from 'react';
 import * as s from './MainStyled';
+import { Link } from 'react-router-dom';
 const MainPresenter = ({ ...props }) => {
     return (
         <s.Wrapper>
@@ -9,7 +10,13 @@ const MainPresenter = ({ ...props }) => {
                     <s.InputArea type="text" placeholder="아이디" value={props.id} onChange={props.onChangeId} />
                     <s.InputArea type="password" placeholder="패스워드" value={props.password} onChange={props.onChangePassword} />
                 </s.LoginArea>
-                <s.LoginButton>로그인</s.LoginButton>
+                <s.LoginButton>LOGIN</s.LoginButton>
+                <s.RegisterArea>
+                    <s.RegisterQuestion>계정이 없으신가요?</s.RegisterQuestion>
+                    <Link to="/register">
+                        <s.ToRegister>회원가입</s.ToRegister>
+                    </Link>
+                </s.RegisterArea>
             </s.Container>
         </s.Wrapper>
     );
