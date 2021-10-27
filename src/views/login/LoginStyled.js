@@ -72,6 +72,19 @@ export const LoginButton = styled.button`
     cursor: pointer;
 `;
 
+export const LoginStatus = styled.div`
+    flex: 1;
+    width: 65%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: red;
+    font-size: 30%;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+`;
+
 export const RegisterArea = styled.div`
     flex: 1;
     width: 65%;
