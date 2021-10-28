@@ -10,6 +10,10 @@ import * as s from './SettingStyled';
 const SettingPresenter = ({ ...props }) => {
     return (
         <s.Container>
+            <s.WrapperTopArea>
+                <s.ResetButton>초기화</s.ResetButton>
+                <s.SaveButton onClick={() => props.onClickSaveButton()}>저장</s.SaveButton>
+            </s.WrapperTopArea>
             <s.Wrapper>
                 <s.SettingItem>
                     <s.SettingTitleArea>
@@ -67,12 +71,19 @@ const SettingPresenter = ({ ...props }) => {
                         </s.TimeSelectArea>
                     </s.SettingContentAreaColumn>
                 </s.SettingItem>
-                <s.SettingItemSmall>
+                <s.SettingItemSmallLast>
                     <s.SettingTitleArea>
-                        <s.SettingTitleText> 수면 색상</s.SettingTitleText>
+                        <s.SettingTitleText> 방해 금지</s.SettingTitleText>
                     </s.SettingTitleArea>
-                    <s.SettingContentArea></s.SettingContentArea>
-                </s.SettingItemSmall>
+                    <s.SettingContentArea>
+                        <input type="checkbox" value={props.avoidDistrub} onChange={(e) => props.setAvoidDistrub(e.target.checked)} />
+                        {props.avoidDistrub ? (
+                            <h5>수면 중 자리에서 벗어날시 무드등이 켜지지 않습니다.</h5>
+                        ) : (
+                            <h5>수면 중 자리에서 벗어날시 무드등이 켜집니다.</h5>
+                        )}
+                    </s.SettingContentArea>
+                </s.SettingItemSmallLast>
             </s.Wrapper>
         </s.Container>
     );

@@ -5,4 +5,5 @@ export const userApi = {
     login: (Data) => notLoginedApi.post(`/auth/user`, Data),
     createUser: (Data) => notLoginedApi.post(`/auth/user/new`, Data),
     isExists: (Data) => notLoginedApi.get(`/auth/user/new?userId=${Data}`),
+    setting: (Data) => loginedApi.put(`/user/setting`, Data),
 };

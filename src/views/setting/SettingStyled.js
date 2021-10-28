@@ -9,6 +9,38 @@ export const Container = styled.div`
     align-content: center;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+`;
+export const WrapperTopArea = styled.div`
+    width: 80%;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+`;
+
+export const SaveButton = styled.button`
+    background-color: #16a085;
+    height: 35px;
+    width: 50px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    &:hover {
+        opacity: 0.5;
+    }
+`;
+
+export const ResetButton = styled.button`
+    margin-right: 1%;
+    background-color: #cccccc;
+    height: 35px;
+    width: 50px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    &:hover {
+        opacity: 0.5;
+    }
 `;
 
 export const Wrapper = styled.div`
@@ -30,10 +62,10 @@ export const SettingItem = styled.div`
     flex-direction: row;
 `;
 
-export const SettingItemSmall = styled.div`
+export const SettingItemSmallLast = styled.div`
     flex: 1;
     width: 90%;
-    border-bottom: 1px solid #16a085;
+
     display: flex;
     flex-direction: row;
 `;
