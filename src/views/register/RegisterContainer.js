@@ -87,6 +87,9 @@ const RegisterContainer = ({ history }) => {
                 result = await userApi.isExists(id);
             } catch (e) {
             } finally {
+                if (!result) {
+                    return;
+                }
                 result.data ? setValidIdExist(false) : setValidIdExist(true);
             }
         };

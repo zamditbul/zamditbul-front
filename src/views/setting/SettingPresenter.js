@@ -11,7 +11,7 @@ const SettingPresenter = ({ ...props }) => {
     return (
         <s.Container>
             <s.WrapperTopArea>
-                <s.ResetButton>초기화</s.ResetButton>
+                <s.ResetButton onClick={() => props.onClickResetButton()}>초기화</s.ResetButton>
                 <s.SaveButton onClick={() => props.onClickSaveButton()}>저장</s.SaveButton>
             </s.WrapperTopArea>
             <s.Wrapper>
@@ -76,8 +76,8 @@ const SettingPresenter = ({ ...props }) => {
                         <s.SettingTitleText> 방해 금지</s.SettingTitleText>
                     </s.SettingTitleArea>
                     <s.SettingContentArea>
-                        <input type="checkbox" value={props.avoidDistrub} onChange={(e) => props.setAvoidDistrub(e.target.checked)} />
-                        {props.avoidDistrub ? (
+                        <input type="checkbox" checked={props.avoidDisturb} onChange={(e) => props.setAvoidDisturb(e.target.checked)} />
+                        {props.avoidDisturb ? (
                             <h5>수면 중 자리에서 벗어날시 무드등이 켜지지 않습니다.</h5>
                         ) : (
                             <h5>수면 중 자리에서 벗어날시 무드등이 켜집니다.</h5>
