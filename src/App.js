@@ -4,9 +4,11 @@ import Router from './Router';
 
 const App = () => {
     return (
-        <RecoilRoot>
-            <Router />
-        </RecoilRoot>
+        <React.StrictMode>
+            <RecoilRoot>
+                <Router />
+            </RecoilRoot>
+        </React.StrictMode>
     );
 };
 

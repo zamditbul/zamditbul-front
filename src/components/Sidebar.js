@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as s from './SidebarStyled';
+import * as util from '../util/util';
 
 const Sidebar = () => {
     return (
@@ -13,7 +14,7 @@ const Sidebar = () => {
                 <s.MenuItem>수면 설정</s.MenuItem>
                 <s.MenuItem>수면 기록</s.MenuItem>
                 <s.MenuItem>회원 정보 수정</s.MenuItem>
-                <s.MenuItem>로그아웃</s.MenuItem>
+                <s.MenuItem onClick={() => util.logout()}>로그아웃</s.MenuItem>
             </s.MenuArea>
             <s.Footer />
         </s.Container>

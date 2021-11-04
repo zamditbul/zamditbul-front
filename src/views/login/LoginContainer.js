@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
+import { useRecoilState } from 'recoil';
+import * as recoilItem from '../../util/recoilItem';
 import LoginPresenter from './LoginPresenter';
 import { userApi } from '../../api/api-user';
 
-const LoginContainer = () => {
+const LoginContainer = ({ history }) => {
     const [id, setId] = useState('');
     const [password, setPassword] = useState('');
     const [loginValid, setLoginValid] = useState(true);
-
+    const [token, setToken] = useRecoilState(recoilItem.token);
     const onChangeId = (e) => {
         setId(e.target.value);
     };
@@ -14,7 +16,7 @@ const LoginContainer = () => {
         setPassword(e.target.value);
     };
 
-    const onSubmitLogin = () => {
+    const onSubmitLogin = async () => {
         let loginForm = {
             user_id: id,
             user_pw: password,
@@ -24,22 +26,24 @@ const LoginContainer = () => {
             alert('빈 칸을 채워주시길 바랍니다.');
         } else {
             try {
-                result = userApi.login(loginForm);
+                result = await userApi.login(loginForm);
             } catch (e) {
             } finally {
-                result.then((value) => {
-                    if (value.data === 'OK') {
+                if (result.data !== '') {
+                    if (result.data.token !== '' && result.data.token !== null) {
+                        setToken(result.data.token);
                         setLoginValid(true);
-                        alert('로그인 성공');
+                        history.push('/');
                     } else {
                         setLoginValid(false);
                     }
-                });
+                } else {
+                    setLoginValid(false);
+                }
             }
         }
     };
 
-    console.log(id);
     return (
         <LoginPresenter
             id={id}
