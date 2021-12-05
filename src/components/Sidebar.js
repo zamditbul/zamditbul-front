@@ -11,8 +11,13 @@ const Sidebar = () => {
             </s.Header>
             <s.MenuArea>
                 <s.MenuItem>기기 연결</s.MenuItem>
-                <s.MenuItem>수면 설정</s.MenuItem>
-                <s.MenuItem>수면 기록</s.MenuItem>
+                <Link to ="/setting">
+                    <s.MenuItem>수면 설정</s.MenuItem>
+                </Link>
+                <Link to = "/sleeplog">
+                    <s.MenuItem>수면 기록</s.MenuItem>
+                </Link>
+                
                 <s.MenuItem>회원 정보 수정</s.MenuItem>
                 <s.MenuItem onClick={() => util.logout()}>로그아웃</s.MenuItem>
             </s.MenuArea>
