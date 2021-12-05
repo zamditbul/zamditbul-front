@@ -44,9 +44,7 @@ const SettingPresenter = ({ ...props }) => {
                         <s.SettingTitleText> 수면 시간</s.SettingTitleText>
                     </s.SettingTitleArea>
                     <s.SettingContentAreaColumn>
-                        <h4>
-                            총 수면 시간: {props.sleepingHour}시간 {props.sleepingMin}분
-                        </h4>
+
                         <s.TimeSelectArea>
                             <LocalizationProvider dateAdapter={AdapterDateFns}>
                                 <TimePicker

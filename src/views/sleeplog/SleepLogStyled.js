@@ -35,7 +35,7 @@ export const Wrapper = styled.div`
 `;
 
 export const TotalInfo = styled.div`
-
+    width: 100%;
     height: 80%;
     justify-content: center;
     align-items: center;

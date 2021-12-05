@@ -38,11 +38,11 @@ const SettingContainer = ({ history }) => {
         } finally {
             console.log('userId', id);
             try {
-                result = await userApi.getSetting(id.data);
+                result = await userApi.getSetting("test1");
                 console.log('res', result);
             } catch (e) {
             } finally {
-                setUserId(id.data);
+                setUserId('test1');
                 //색상 설정
                 if (result) {
                     if (result.data.color) {
@@ -72,14 +72,21 @@ const SettingContainer = ({ history }) => {
 
     const onClickSaveButton = async () => {
         let result = null;
+        let sleep = new Date(Date.UTC(2021, 1, 1, sleepTime.getHours() + 3 - 12, sleepTime.getMinutes(), 0));
+        let sleep_time = sleep.toLocaleTimeString();
+
+        let wake = new Date(Date.UTC(2021, 1, 1, wakeTime.getHours() + 3 - 12, wakeTime.getMinutes(), 0));
+        let wake_time = wake.toLocaleTimeString();
         let settingForm = {
-            userId: userId,
-            color: selectedColor,
-            sleep_hour: sleepTime.getHours(),
-            sleep_min: sleepTime.getMinutes(),
-            wake_hour: wakeTime.getHours(),
-            wake_min: wakeTime.getMinutes(),
-            doNotDisturb: avoidDisturb,
+            user_Id: 'test1',
+            device: {
+                deviceId: 2,
+                serialNum: 'abc',
+                color: selectedColor,
+                sleep: sleep_time,
+                wake_up: wake_time,
+                doNotDisturb: avoidDisturb,
+            }
         };
 
         console.log('requestData', settingForm);

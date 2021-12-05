@@ -17,7 +17,9 @@ const SleepLogPresenter = ({...props}) => {
         <s.Container>
             <s.WrapperTopArea>수면 기록</s.WrapperTopArea>
             <s.Wrapper>
-                <s.TotalInfo>
+                {props.sleepData ? 
+                <>
+                 <s.TotalInfo>
                     <s.TotalInfoMenuItem>
                         <s.TotalInfoMenuText>평균 수면 시간</s.TotalInfoMenuText>
                         <s.TotalInfoMenuBox>{props.sleepData.avg_sleep}</s.TotalInfoMenuBox>
@@ -31,6 +33,7 @@ const SleepLogPresenter = ({...props}) => {
                         <s.TotalInfoMenuBox>{props.sleepData.avg_wake}</s.TotalInfoMenuBox>
                     </s.TotalInfoMenuItem>
                 </s.TotalInfo>
+
                 <s.SleepGraph>
                     <ComposedChart
                         width={800}
@@ -59,6 +62,11 @@ const SleepLogPresenter = ({...props}) => {
                             onClick={() => props.setPage(props.page+1)}
                     />}
                 </s.SleepGraph>
+                </>
+                :
+                null
+            }
+               
             </s.Wrapper>
         </s.Container>
     );
