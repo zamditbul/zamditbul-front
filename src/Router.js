@@ -9,6 +9,7 @@ import register from './views/register';
 import Sidebar from './components/Sidebar';
 import * as s from './RouterDivision';
 import setting from './views/setting';
+import sleeplog from './views/sleeplog';
 
 export default ({}) => {
     const token = useRecoilValue(recoilItem.token);
@@ -20,6 +21,7 @@ export default ({}) => {
                     <>
                         <Sidebar />
                         <Route path="/" exact component={setting} />
+                        <Route path="/sleeplog" exact component={sleeplog}/>
                     </>
                 ) : (
                     <>
