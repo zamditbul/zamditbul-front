@@ -53,6 +53,8 @@ const DeviceContainer = () => {
             }
             else if (result.data === "OK"){
                 alert("저장되었습니다");
+                fetchData();
+
             }
         }
     }
