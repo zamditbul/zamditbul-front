@@ -58,7 +58,6 @@ const RegisterContainer = ({ history }) => {
                             setPasswordConfirm('');
                             return;
                         }
-                        console.log(result);
                         alert('회원가입이 완료되었습니다');
                         history.push('/');
                     } else {

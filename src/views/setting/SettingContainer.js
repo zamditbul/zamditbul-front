@@ -23,6 +23,9 @@ const SettingContainer = ({ history }) => {
     const [avoidDisturb, setAvoidDisturb] = useState(false);
 
     const [userId, setUserId] = useState('');
+    const [deviceId, setDeviceId] = useState('');
+    const [serialNum, setSerialNum] = useState('');
+
     const fetchData = async () => {
         let result;
         var sleep = new Date();
@@ -36,29 +39,29 @@ const SettingContainer = ({ history }) => {
             id = await userApi.getUser(token);
         } catch (e) {
         } finally {
-            console.log('userId', id);
             try {
-                result = await userApi.getSetting("test1");
-                console.log('res', result);
+                result = await userApi.getSetting(id.data);
             } catch (e) {
             } finally {
-                setUserId('test1');
+                setUserId(id.data);
                 //색상 설정
                 if (result) {
                     if (result.data.color) {
                         //색상 있을 때 데이터베이스의 내용으로 집어넣음 (없으면 useState 기본값)
                         setColor(toColor('hex', result.data.color));
                         setSelectedColor(result.data.color);
+                        setDeviceId(result.data.deviceId);
+                        setSerialNum(result.data.serialNum);
                     }
 
                     result.data.doNotDisturb === true ? setAvoidDisturb(true) : setAvoidDisturb(false); //방해금지 체크 여부
 
-                    if (result.data.sleep_hour !== null) {
+                    if (result.data.sleep !== null) {
                         //기존에 시간을 등록했다면 그 데이터로 처리
-                        sleep.setHours(result.data.sleep_hour);
-                        sleep.setMinutes(result.data.sleep_min);
-                        wake.setHours(result.data.wake_hour);
-                        wake.setMinutes(result.data.wake_min);
+                        sleep.setHours(Number(result.data.sleep.split(":")[0]));
+                        sleep.setMinutes(Number(result.data.sleep.split(":")[1]));
+                        wake.setHours(Number(result.data.wake_up.split(":")[0]));
+                        wake.setMinutes(Number(result.data.wake_up.split(":")[1]));
                         setSleepTime(sleep);
                         setWakeTime(wake);
                     }
@@ -70,26 +73,29 @@ const SettingContainer = ({ history }) => {
         fetchData();
     };
 
+    const timeToHourMin = (hour, min) =>{
+        let temp = "";
+        hour < 10 ? temp = temp+ "0"+ hour + ":" : temp = temp + hour + ":";
+        min < 10 ? temp = temp + "0" + min : temp = temp + min;
+        return temp;
+    }
+
     const onClickSaveButton = async () => {
         let result = null;
-        let sleep = new Date(Date.UTC(2021, 1, 1, sleepTime.getHours() + 3 - 12, sleepTime.getMinutes(), 0));
-        let sleep_time = sleep.toLocaleTimeString();
-
-        let wake = new Date(Date.UTC(2021, 1, 1, wakeTime.getHours() + 3 - 12, wakeTime.getMinutes(), 0));
-        let wake_time = wake.toLocaleTimeString();
+        let sleep = timeToHourMin(sleepTime.getHours(), sleepTime.getMinutes());
+        let wake = timeToHourMin(wakeTime.getHours(), wakeTime.getMinutes());
+        
         let settingForm = {
-            user_Id: 'test1',
+            user_id: userId,
             device: {
                 deviceId: 2,
                 serialNum: 'abc',
                 color: selectedColor,
-                sleep: sleep_time,
-                wake_up: wake_time,
+                sleep: sleep,
+                wake_up: wake,
                 doNotDisturb: avoidDisturb,
             }
         };
-
-        console.log('requestData', settingForm);
 
         if (window.confirm('저장하시겠습니까?') === true) {
             try {

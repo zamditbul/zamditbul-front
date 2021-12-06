@@ -4,7 +4,7 @@ import { userApi } from '../../api/api-user';
 import * as recoilItem from '../../util/recoilItem';
 import { useRecoilValue } from 'recoil';
 
-const SleepLogContainer = () => {
+const SleepLogContainer = ({history}) => {
     const token = useRecoilValue(recoilItem.token);
     const [userId, setUserId] = useState('');
 
@@ -12,7 +12,6 @@ const SleepLogContainer = () => {
     const [page, setPage] = useState(1);
     const [maxPage, setMaxPage] = useState(1);
     const [viewSleepData, setViewSleepData] = useState([]);
-    const [widthSize, setWidthSize] = useState(window.innerWidth);
 
     const calculateSleepTime =(value) => {
         var hour = Number(String(value).split(":")[0]);
@@ -27,19 +26,18 @@ const SleepLogContainer = () => {
             id = await userApi.getUser(token);
         } catch (e) {
         } finally {
-            console.log('userId', id);
             try {
-                result = await userApi.getSleepData("test1");
+                result = await userApi.getSleepData(id.data);
             } catch (e) {
+                alert("수면 기록이 존재하지 않습니다!");
+                history.push("/");
             } finally {
-                setUserId("test1");
+                setUserId(id.data);
                 if (result) {
                     setSleepData(result.data);
-                    console.log(result);
                     if (result.data.sleepData){
                         var len = result.data.sleepData.length;
                         setMaxPage(Math.floor(len / 3 + 1));
-                        console.log(maxPage);
                     }
                     setPage(1);
                     UpdateGraphView();
@@ -80,7 +78,6 @@ const SleepLogContainer = () => {
                 });
             }
             setViewSleepData(temp);
-            console.log("viewsleep;:::",viewSleepData);
         }
     }
 
