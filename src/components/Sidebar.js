@@ -11,8 +11,10 @@ const Sidebar = () => {
                     <s.HeaderContent>잠딧불</s.HeaderContent>
                 </s.Header>
                 <s.MenuArea>
-                    <s.MenuItem>기기 연결</s.MenuItem>
-                    <Link to="/setting" style={{ textDecorationLine: 'none' }}>
+                    <Link to="/device" style={{ textDecorationLine: 'none' }}>
+                        <s.MenuItem>기기 연결</s.MenuItem>
+                    </Link>
+                    <Link to="/" style={{ textDecorationLine: 'none' }}>
                         <s.MenuItem>수면 설정</s.MenuItem>
                     </Link>
                     <Link to="/sleeplog" style={{ textDecorationLine: 'none' }}>

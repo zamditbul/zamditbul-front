@@ -13,5 +13,6 @@ export const userApi = {
     isExists: (Data) => notLoginedApi.get(`/auth/user/new?userId=${Data}`),
     setting: (Data) => loginedApi.post(`/user/setting`, Data),
     getSetting: (Data) => loginedApi.get(`/user/setting?userId=${Data}`),
-    getSleepData: (Data) => loginedApi.get(`/user/record?userId=${Data}`)
+    getSleepData: (Data) => loginedApi.get(`/user/record?userId=${Data}`),
+    deviceConnect: (Data) => loginedApi.post(`/user/device`, Data)
 };
