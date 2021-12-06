@@ -20,8 +20,6 @@ const Sidebar = () => {
                     <Link to="/sleeplog" style={{ textDecorationLine: 'none' }}>
                         <s.MenuItem>수면 기록</s.MenuItem>
                     </Link>
-
-                    <s.MenuItem>회원 정보 수정</s.MenuItem>
                     <s.MenuItem onClick={() => util.logout()}>로그아웃</s.MenuItem>
                 </s.MenuArea>
                 <s.Footer />
