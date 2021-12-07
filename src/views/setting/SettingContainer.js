@@ -45,7 +45,12 @@ const SettingContainer = ({ history }) => {
             } finally {
                 setUserId(id.data);
                 //색상 설정
+                console.log('result', result);
                 if (result) {
+                    if(result.data.serialNum === "NOT_CONNECTED"){
+                        alert("디바이스가 연결되어 있지 않습니다. 디바이스를 등록해주세요");
+                        history.push("/");
+                    }
                     if (result.data.color) {
                         //색상 있을 때 데이터베이스의 내용으로 집어넣음 (없으면 useState 기본값)
                         setColor(toColor('hex', result.data.color));

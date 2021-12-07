@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
     min-width: 200px;
@@ -24,6 +25,7 @@ export const Header = styled.div`
     color: yellow;
     width: 100%;
     height: 100%;
+    padding-top: 5px;
 `;
 export const HeaderContent = styled.div`
     font-size: 30px;
@@ -40,10 +42,11 @@ export const MenuArea = styled.div`
         flex: 4;
     }
 `;
-export const MenuItem = styled.div`
+export const MenuItem = styled(Link)`
     display: flex;
     height: 100px;
     width: 100%;
+    text-decoration-line: none;
     border-top: 1px solid white;
     border-bottom: 1px solid white;
     justify-content: center;

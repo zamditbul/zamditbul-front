@@ -74,5 +74,5 @@ export const TotalInfoMenuBox = styled.div`
 export const SleepGraph = styled.div`
     flex: 4;
     height: 80%;
-
+    margin-top: 150px;
 `;

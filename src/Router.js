@@ -21,9 +21,9 @@ export default ({}) => {
                 {util.tokenCheck(token) ? (
                     <>
                         <Sidebar />
-                        <Route path="/" exact component={setting} />
+                        <Route path="/setting" exact component={setting} />
                         <Route path="/sleeplog" exact component={sleeplog}/>
-                        <Route path="/device" exact component={device}/>
+                        <Route path="/" exact component={device}/>
                     </>
                 ) : (
                     <>
