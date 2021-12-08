@@ -110,7 +110,7 @@ const SettingContainer = ({ history }) => {
                 result.then((value) => {
                     if (value.data === 'OK') {
                         alert('수정이 완료되었습니다');
-                        history.push('/');
+                        fetchData();
                     } else {
                         alert('에러가 발생했습니다. 다시 시도해주세요');
                     }
